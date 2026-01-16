@@ -1,0 +1,10 @@
+# Cloudflare Pages redirects
+# https://developers.cloudflare.com/pages/configuration/redirects/
+
+# Common redirects
+/home / 301
+/index.html / 301
+/index / 301
+
+# Old paths (add as needed)
+# /old-path /new-path 301
