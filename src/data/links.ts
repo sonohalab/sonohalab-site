@@ -14,21 +14,9 @@ export const socialLinks: SocialLink[] = [
   },
   {
     id: 'x',
-    name: 'X (Twitter)',
-    url: '#', // Replace with actual URL
+    name: 'X',
+    url: 'https://x.com/sonohalab',
     icon: 'x',
-  },
-  {
-    id: 'bluesky',
-    name: 'Bluesky',
-    url: '#', // Replace with actual URL
-    icon: 'bluesky',
-  },
-  {
-    id: 'threads',
-    name: 'Threads',
-    url: '#', // Replace with actual URL
-    icon: 'threads',
   },
 ];
 
