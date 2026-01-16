@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import { contactEmail } from '../data/links';
+
+const pressInfo = {
+  shortDescription: {
+    ja: 'シンプルで便利なアプリやツールを作る個人開発ラボ',
+    en: 'An indie dev lab creating simple and useful apps and tools',
+  },
+  longDescription: {
+    ja: `sonohalab（ソノハラボ）は、日常をちょっと便利にする小さなアプリやツールを作る個人開発ラボです。
+    「小さく役に立つ道具」をテーマに、iOSアプリ、Chrome拡張機能、Webサービスなどを開発しています。
+    ユーザーのプライバシーを尊重し、シンプルで使いやすいデザインを心がけています。`,
+    en: `sonohalab is an indie development lab focused on creating small apps and tools that make everyday life a little easier.
+    Under the theme of "small, useful tools," we develop iOS apps, Chrome extensions, and web services.
+    We prioritize user privacy and strive for simple, user-friendly designs.`,
+  },
+};
+
+const assets = [
+  {
+    name: 'Logo (SVG)',
+    filename: 'sonohalab-logo.svg',
+    path: '/assets/sonohalab-logo.svg',
+  },
+  {
+    name: 'Logo (PNG)',
+    filename: 'sonohalab-logo.png',
+    path: '/assets/sonohalab-logo.png',
+  },
+  {
+    name: 'Icon (1024x1024)',
+    filename: 'sonohalab-icon.png',
+    path: '/assets/sonohalab-icon.png',
+  },
+];
+---
+
+<Layout
+  title="Press Kit"
+  description="sonohalaのプレスキット。メディア掲載用のアセットと情報をご確認いただけます。"
+>
+  <div class="max-w-4xl mx-auto px-4">
+    <section class="py-16">
+      <h1 class="text-3xl font-bold mb-8">Press Kit</h1>
+
+      <p class="text-gray-600 mb-8">
+        メディア掲載やレビュー用の素材と情報をまとめています。
+        ご不明な点がございましたら、お気軽にお問い合わせください。
+      </p>
+
+      <!-- Short Description -->
+      <Section title="一行説明">
+        <div class="space-y-2">
+          <p class="text-gray-700">
+            <span class="text-xs text-gray-400 mr-2">JP</span>
+            {pressInfo.shortDescription.ja}
+          </p>
+          <p class="text-gray-700">
+            <span class="text-xs text-gray-400 mr-2">EN</span>
+            {pressInfo.shortDescription.en}
+          </p>
+        </div>
+      </Section>
+
+      <!-- Long Description -->
+      <Section title="詳細説明">
+        <div class="space-y-6">
+          <div>
+            <p class="text-xs text-gray-400 mb-2">日本語</p>
+            <p class="text-gray-700 whitespace-pre-line text-sm leading-relaxed">
+              {pressInfo.longDescription.ja}
+            </p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-400 mb-2">English</p>
+            <p class="text-gray-700 whitespace-pre-line text-sm leading-relaxed">
+              {pressInfo.longDescription.en}
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <!-- Assets -->
+      <Section title="ロゴ・アイコン">
+        <div class="grid gap-4 sm:grid-cols-3">
+          {assets.map((asset) => (
+            <div class="border border-gray-200 rounded-lg p-4">
+              <div class="aspect-square bg-gray-100 rounded-lg mb-3 flex items-center justify-center">
+                <img
+                  src={asset.path}
+                  alt={asset.name}
+                  class="max-w-full max-h-full p-4"
+                  onerror="this.parentElement.innerHTML='<span class=\'text-gray-400 text-sm\'>準備中</span>'"
+                />
+              </div>
+              <p class="text-sm font-medium text-gray-900">{asset.name}</p>
+              <p class="text-xs text-gray-400">{asset.filename}</p>
+            </div>
+          ))}
+        </div>
+        <p class="text-sm text-gray-500 mt-4">
+          ※ アセットファイルは準備中です。必要な場合はお問い合わせください。
+        </p>
+      </Section>
+
+      <!-- Screenshots placeholder -->
+      <Section title="スクリーンショット">
+        <div class="bg-gray-50 rounded-lg p-8 text-center">
+          <p class="text-gray-500">
+            各プロダクトのスクリーンショットは準備中です。<br />
+            必要な場合はお問い合わせください。
+          </p>
+        </div>
+      </Section>
+
+      <!-- Contact -->
+      <Section title="お問い合わせ">
+        <p class="text-gray-600 mb-4">
+          メディア掲載、インタビュー、その他のお問い合わせはこちらまでご連絡ください。
+        </p>
+        <p>
+          <a
+            href={`mailto:${contactEmail}`}
+            class="text-accent hover:underline font-medium"
+          >
+            {contactEmail}
+          </a>
+        </p>
+      </Section>
+    </section>
+  </div>
+</Layout>

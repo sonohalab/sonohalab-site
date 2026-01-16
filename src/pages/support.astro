@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import { contactEmail } from '../data/links';
+
+const faqs = [
+  {
+    question: 'アプリの不具合を見つけました。どこに報告すればいいですか？',
+    answer: `${contactEmail} までメールでご連絡ください。再現手順、端末情報、OSバージョンを添えていただけると、より早く対応できます。`,
+  },
+  {
+    question: '機能のリクエストはできますか？',
+    answer: `もちろんです。${contactEmail} まで、どのような機能が欲しいか、どんな場面で使いたいかをお聞かせください。`,
+  },
+  {
+    question: '返信にどのくらいかかりますか？',
+    answer: '通常、2〜3営業日以内に返信いたします。お急ぎの場合はその旨をお書き添えください。',
+  },
+  {
+    question: 'プライバシーポリシーはどこで確認できますか？',
+    answer: 'プライバシーポリシーページをご覧ください。',
+  },
+  {
+    question: 'アプリのアカウントを削除したいのですが？',
+    answer: `${contactEmail} までご連絡ください。ご本人確認の上、対応いたします。`,
+  },
+];
+---
+
+<Layout
+  title="Support"
+  description="sonohalaのサポート情報とよくある質問をご覧いただけます。"
+>
+  <div class="max-w-4xl mx-auto px-4">
+    <section class="py-16">
+      <h1 class="text-3xl font-bold mb-8">Support</h1>
+
+      <!-- Contact -->
+      <Section title="お問い合わせ">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <p class="text-gray-600 mb-4">
+            ご質問、不具合のご報告、機能のリクエストなど、お気軽にご連絡ください。
+          </p>
+          <p class="mb-2">
+            <span class="text-gray-500 text-sm">メール:</span>
+            <a
+              href={`mailto:${contactEmail}`}
+              class="text-accent hover:underline font-medium ml-2"
+            >
+              {contactEmail}
+            </a>
+          </p>
+          <p class="text-sm text-gray-400">
+            通常、2〜3営業日以内に返信いたします。
+          </p>
+        </div>
+      </Section>
+
+      <!-- FAQ -->
+      <Section title="よくある質問">
+        <div class="space-y-6">
+          {faqs.map((faq, index) => (
+            <div class="border-b border-gray-100 pb-6 last:border-0">
+              <h3 class="font-medium text-gray-900 mb-2">
+                <span class="text-accent mr-2">Q{index + 1}.</span>
+                {faq.question}
+              </h3>
+              <p class="text-gray-600 text-sm pl-6">
+                {faq.answer.includes('プライバシーポリシーページ') ? (
+                  <>
+                    <a href="/privacy" class="text-accent hover:underline">プライバシーポリシーページ</a>をご覧ください。
+                  </>
+                ) : (
+                  faq.answer
+                )}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
+    </section>
+  </div>
+</Layout>

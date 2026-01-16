@@ -1,0 +1,48 @@
+---
+import type { Product } from '../data/products';
+import Badge from './Badge.astro';
+
+interface Props {
+  product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article class="border border-gray-200 rounded-lg p-6 hover:border-accent/50 transition-colors">
+  <div class="flex items-start justify-between gap-4">
+    <div class="flex-1">
+      <div class="flex items-center gap-3 mb-2">
+        <h3 class="text-lg font-semibold">{product.name}</h3>
+        <Badge variant={product.status === 'available' ? 'default' : 'muted'}>
+          {product.status === 'available' ? product.platform : 'Coming Soon'}
+        </Badge>
+      </div>
+      <p class="text-gray-600 text-sm mb-1">{product.description.ja}</p>
+      <p class="text-gray-400 text-xs">{product.description.en}</p>
+    </div>
+    {product.icon && (
+      <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0">
+        <img
+          src={product.icon}
+          alt={`${product.name} icon`}
+          class="w-full h-full object-cover"
+          onerror="this.style.display='none'"
+        />
+      </div>
+    )}
+  </div>
+  {product.status === 'available' && product.url && (
+    <a
+      href={product.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-1 mt-4 text-sm text-accent hover:underline"
+    >
+      View on {product.platform}
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    </a>
+  )}
+</article>

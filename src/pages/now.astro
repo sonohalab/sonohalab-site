@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+
+const lastUpdated = '2025年1月';
+
+const currentActivities = [
+  'WhenUsed の機能改善とバグ修正',
+  'Chrome拡張機能の開発（プロトタイプ段階）',
+  '新しいWebサービスのアイデア検討',
+  '技術ブログの執筆準備',
+  'ユーザーフィードバックの収集と分析',
+];
+---
+
+<Layout
+  title="Now"
+  description="sonohalaが今やっていることの一覧です。"
+>
+  <div class="max-w-4xl mx-auto px-4">
+    <section class="py-16">
+      <h1 class="text-3xl font-bold mb-2">Now</h1>
+      <p class="text-sm text-gray-400 mb-8">最終更新: {lastUpdated}</p>
+
+      <div class="prose prose-gray max-w-none">
+        <p class="text-gray-600 mb-6">
+          このページでは、sonohalaが現在取り組んでいることを紹介しています。
+          <a
+            href="https://nownownow.com/about"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent hover:underline"
+          >/now page</a> にインスパイアされています。
+        </p>
+
+        <Section title="現在の活動">
+          <ul class="space-y-3">
+            {currentActivities.map((activity) => (
+              <li class="flex items-start gap-3 text-gray-700">
+                <span class="text-accent mt-1">•</span>
+                <span>{activity}</span>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      </div>
+    </section>
+  </div>
+</Layout>

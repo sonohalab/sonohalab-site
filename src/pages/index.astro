@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Section from '../components/Section.astro';
+import ProductCard from '../components/ProductCard.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { siteConfig } from '../data/site';
+import { products } from '../data/products';
+import { contactEmail } from '../data/links';
+---
+
+<Layout>
+  <div class="max-w-4xl mx-auto px-4">
+    <!-- Hero -->
+    <section class="py-20 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+        sonohalab
+      </h1>
+      <p class="text-xl text-gray-600 mb-2">{siteConfig.tagline.ja}</p>
+      <p class="text-sm text-gray-400">{siteConfig.tagline.en}</p>
+    </section>
+
+    <!-- Products -->
+    <Section title="Products" id="products">
+      <div class="grid gap-4">
+        {products.map((product) => (
+          <ProductCard product={product} />
+        ))}
+      </div>
+    </Section>
+
+    <!-- Links -->
+    <Section title="Links" id="links">
+      <SocialLinks />
+    </Section>
+
+    <!-- Contact -->
+    <Section title="Contact" id="contact">
+      <p class="text-gray-600 mb-4">
+        ご質問やご要望がありましたら、お気軽にご連絡ください。
+      </p>
+      <p class="mb-4">
+        <a
+          href={`mailto:${contactEmail}`}
+          class="text-accent hover:underline font-medium"
+        >
+          {contactEmail}
+        </a>
+      </p>
+      <p class="text-sm text-gray-500">
+        詳しいサポート情報は
+        <a href="/support" class="text-accent hover:underline">サポートページ</a>
+        をご覧ください。
+      </p>
+    </Section>
+  </div>
+</Layout>
